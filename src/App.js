@@ -1,14 +1,21 @@
 //jshint esversion:9
 
+import { useRef } from 'react';
 import './App.css';
 import { Menu } from './components/Menu';
+import useOnScreen from './hooks/useOnScreen';
 import instaImg from './icons/icons8-instagram-50.png';
+import likeIcon from './icons/icons8-heart-30.png';
+import commentIcon from './icons/icons8-topic-48.png';
 
 function App() {
+  const ref = useRef();
+  const isVisible = useOnScreen(ref);
+
   return (
     <div className='App'>
       <Menu />
-      <h1 className='fixed inline-block top-[50vh] -right-1 -rotate-90 bg-white p-2'>Request Info</h1>
+      <h1 className='fixed inline-block top-[50vh] -right-1 -rotate-90 bg-white px-2 uppercase pt-1 cursor-pointer'> Request Info</h1>
       <section
         className='section-1 bg-[#FFDAC9] min-h-screen flex justify-center items-center bg-contain bg-center bg-no-repeat bg-origin-content p-12'
         style={{ backgroundImage: "url('./pexels-trang-doan-793759.jpg')" }}
@@ -21,7 +28,7 @@ function App() {
           <h1 className='text-2xl '>NOW IN LONDON</h1>
         </div>
       </section>
-      <section className='grid grid-cols-4 gap-y-4 p-16 bg-[#EEE] '>
+      <section className={`grid grid-cols-4 gap-y-4 p-16 bg-[#EEE]`} ref={ref}>
         <div></div>
         <div className='section-2-row-1-right w-52'>
           <div className='relative text-5xl flex flex-col text-left'>
@@ -40,57 +47,72 @@ function App() {
             <p>LOREM IPSUM DOLOR SIT AMET ERNUT TEMPARTERO SERTU PER NABORE EN TORNA ENTALTO</p>
           </div>
         </div>
-        <div className='h-full flex items-end'>
+        <div className={`h-full flex items-end slideIn ${isVisible && 'open'}`}>
           <div className='relative h-52 w-52 bg-white bg-cover bg-no-repeat bg-origin-content p-2 ' style={{ backgroundImage: "url('./pexels-trang-doan-793765.jpg')" }}>
             <img src={instaImg} alt='instagram' className='absolute top-0 right-0 inline-block bg-[#FFDAC9]' />
           </div>
         </div>
-        <div className='h-full flex items-end'>
+        <div className={`h-full flex items-end slideIn ${isVisible && 'open'}`}>
           <div className='relative h-52 w-52 bg-white p-4 flex flex-col justify-between'>
-            <h1 className='text-xl text-left'>@buzzfeedfood</h1>
-            <p className='text-left text-sm'>
-              It’s taco Tuesday! These tacos from @jesseszewczyk have no added sugars and are SO good 🌮 . Find the recipe from the link in our bio! 📸 : @taylormillerphoto
-            </p>
-            <div className='text-right'>
-              <span>Comments icon</span>
-              <span> Like icon</span>
+            <div>
+              <h1 className='text-xl text-left'>@buzzfeedfood</h1>
+              <p className='text-left text-sm mt-3'>
+                It’s taco Tuesday! These tacos from @jesseszewczyk have no added sugars and are SO good 🌮 . Find the recipe from the link in our bio! 📸 : @taylormillerphoto
+              </p>
+            </div>
+            <div className='text-right flex justify-end items-start h-5 space-x-1'>
+              <img src={commentIcon} alt='like' style={{ width: '15px', height: '15px' }} /> <span className='text-sm'>152</span>
+              <img src={likeIcon} alt='like' style={{ width: '15px', height: '15px' }} />
+              <span className='text-sm'>18.2K</span>
             </div>
           </div>
         </div>
 
-        <div className='h-52 w-52 bg-white p-4 flex flex-col justify-between'>
-          <h1 className='text-xl text-left'>@love_food</h1>
-          <p className='text-left text-sm'>
-            Waffle sticks in Copenhagen! 😍 Milk chocolate with sprinkles, dark chocolate with coconut and milk chocolate with peanuts! [📷 : @foodwithmichel] #lovefood
-          </p>
-          <div className='text-right'>
-            <span>Comments icon</span>
-            <span> Like icon</span>
+        <div className={`h-52 w-52 bg-white p-4 flex flex-col justify-between slideIn-2nd ${isVisible && 'open'}`}>
+          <div>
+            <h1 className='text-xl text-left'>@love_food</h1>
+            <p className='text-left text-sm mt-3'>
+              Waffle sticks in Copenhagen! 😍 Milk chocolate with sprinkles, dark chocolate with coconut and milk chocolate with peanuts! [📷 : @foodwithmichel] #lovefood
+            </p>
+          </div>
+          <div className='text-right flex justify-end items-start h-5 space-x-1'>
+            <img src={commentIcon} alt='like' style={{ width: '15px', height: '15px' }} /> <span className='text-sm'>152</span>
+            <img src={likeIcon} alt='like' style={{ width: '15px', height: '15px' }} />
+            <span className='text-sm'>18.2K</span>
           </div>
         </div>
-        <div className='relative h-52 w-52 bg-white bg-cover bg-no-repeat bg-origin-content p-2 ' style={{ backgroundImage: "url('./pexels-trang-doan-793765.jpg')" }}>
+        <div
+          className={`relative h-52 w-52 bg-white bg-cover bg-no-repeat bg-origin-content p-2 slideIn-2nd ${isVisible && 'open'}`}
+          style={{ backgroundImage: "url('./pexels-trang-doan-793765.jpg')" }}
+        >
           <img src={instaImg} alt='instagram' className='absolute top-0 right-0 inline-block bg-[#FFDAC9]' />
         </div>
 
         <div></div>
         <div></div>
 
-        <div className='h-52 w-52 p-4 flex items-center'>
+        <div className={`h-52 w-52 p-4 flex items-center slideIn-3rd ${isVisible && 'open'}`}>
           <p className='text-left text-sm'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure.</p>
         </div>
 
         <div></div>
 
-        <div className='h-52 w-52 bg-white p-4 flex flex-col justify-between'>
-          <h1 className='text-xl text-left'>@buzzfeedfood</h1>
-          <p className='text-left text-sm'>Getting into long weekend mode like 🍤 #pancitpalabok (📷 @jeepneynyc)</p>
-          <div className='text-right'>
-            <span>Comments icon</span>
-            <span> Like icon</span>
+        <div className={`h-52 w-52 bg-white p-4 flex flex-col justify-between slideIn-3rd ${isVisible && 'open'}`}>
+          <div>
+            <h1 className='text-xl text-left'>@buzzfeedfood</h1>
+            <p className='text-left text-sm mt-3'>Getting into long weekend mode like 🍤 #pancitpalabok (📷 @jeepneynyc)</p>
+          </div>
+          <div className='text-right flex justify-end items-start h-5 space-x-1'>
+            <img src={commentIcon} alt='like' style={{ width: '15px', height: '15px' }} /> <span className='text-sm'>152</span>
+            <img src={likeIcon} alt='like' style={{ width: '15px', height: '15px' }} />
+            <span className='text-sm'>18.2K</span>
           </div>
         </div>
 
-        <div className='relative h-52 w-52 bg-white bg-cover bg-no-repeat bg-origin-content p-2 ' style={{ backgroundImage: "url('./pexels-trang-doan-793765.jpg')" }}>
+        <div
+          className={`relative h-52 w-52 bg-white bg-cover bg-no-repeat bg-origin-content p-2  slideIn-3rd ${isVisible && 'open'}`}
+          style={{ backgroundImage: "url('./pexels-trang-doan-793765.jpg')" }}
+        >
           <img src={instaImg} alt='instagram' className='absolute top-0 right-0 inline-block bg-[#FFDAC9]' />
         </div>
       </section>

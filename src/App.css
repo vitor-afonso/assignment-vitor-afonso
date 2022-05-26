@@ -7,3 +7,25 @@
   font-family: GillSans;
   text-align: center;
 }
+
+.slideIn {
+  transition: all 1.5s;
+  transition-timing-function: cubic-bezier(0, 0.45, 0.24, 1.01);
+  transform: translateY(300px);
+}
+
+.slideIn-2nd {
+  transition: all 2s;
+  transition-timing-function: cubic-bezier(0, 0.45, 0.24, 1.01);
+  transform: translateY(500px);
+}
+.slideIn-3rd {
+  transition: all 2.5s;
+  transition-timing-function: cubic-bezier(0, 0.45, 0.24, 1.01);
+  transform: translateY(700px);
+}
+.slideIn-3rd.open,
+.slideIn-2nd.open,
+.slideIn.open {
+  transform: translateY(0px);
+}
