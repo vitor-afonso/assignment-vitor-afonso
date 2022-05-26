@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 export default function useOnScreen(ref) {
   const [isIntersecting, setIntersecting] = useState(false);
   let options = {
+    root: document.querySelector('#super-open'),
     rootMargin: '400px',
-    threshold: 1.0,
+    threshold: 0.5,
   };
   const observer = new IntersectionObserver(([entry]) => setIntersecting(!isIntersecting ? entry.isIntersecting : isIntersecting), options);
 

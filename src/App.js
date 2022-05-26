@@ -11,6 +11,7 @@ import commentIcon from './icons/icons8-topic-48.png';
 function App() {
   const ref = useRef();
   const isVisible = useOnScreen(ref);
+  const isVisiblePassed = useOnScreen(ref);
 
   return (
     <div className='App'>
@@ -47,7 +48,7 @@ function App() {
             <p>LOREM IPSUM DOLOR SIT AMET ERNUT TEMPARTERO SERTU PER NABORE EN TORNA ENTALTO</p>
           </div>
         </div>
-        <div className={`h-full flex items-end slideIn ${isVisible && 'open'}`}>
+        <div className={`h-full flex items-end slideIn ${isVisible && 'open'} `}>
           <div className='relative h-52 w-52 bg-white bg-cover bg-no-repeat bg-origin-content p-2 ' style={{ backgroundImage: "url('./pexels-trang-doan-793765.jpg')" }}>
             <img src={instaImg} alt='instagram' className='absolute top-0 right-0 inline-block bg-[#FFDAC9]' />
           </div>
@@ -117,7 +118,7 @@ function App() {
         </div>
       </section>
 
-      <section className='section-3 h-60'>
+      <section className='section-3 h-[1000px]'>
         <h1>Locations</h1>
       </section>
     </div>

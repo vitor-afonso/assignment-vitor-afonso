@@ -17,12 +17,12 @@
 .slideIn-2nd {
   transition: all 2s;
   transition-timing-function: cubic-bezier(0, 0.45, 0.24, 1.01);
-  transform: translateY(500px);
+  transform: translateY(200px);
 }
 .slideIn-3rd {
   transition: all 2.5s;
-  transition-timing-function: cubic-bezier(0, 0.45, 0.24, 1.01);
-  transform: translateY(700px);
+  transition-timing-function: cubic-bezier(0, 0.15, 0.84, 1.01);
+  transform: translateY(60px);
 }
 .slideIn-3rd.open,
 .slideIn-2nd.open,
