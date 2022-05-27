@@ -11,7 +11,7 @@ export const Locations = () => {
   return (
     <>
       {isLoaded ? (
-        <section className='section-3 relative'>
+        <section className='section-3 relative z-50'>
           <h1 className='absolute z-40 top-[65px] left-[180px] text-4xl'>LOCATION</h1>
           <div className='address-location absolute z-30 top-20 left-40 h-20 w-[150px] bg-white p-2'>
             <p className='mt-5 text-left paragraph text-xs'>

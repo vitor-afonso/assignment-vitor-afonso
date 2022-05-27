@@ -6,7 +6,7 @@ export default function useOnScreen(ref) {
   let options = {
     root: document.querySelector('#super-open'),
     rootMargin: '400px',
-    threshold: 0.5,
+    threshold: 0.7,
   };
   const observer = new IntersectionObserver(([entry]) => setIntersecting(!isIntersecting ? entry.isIntersecting : isIntersecting), options);
 

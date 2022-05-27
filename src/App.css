@@ -26,10 +26,28 @@
 }
 .slideIn-3rd.open,
 .slideIn-2nd.open,
+.slide-up.open,
+.slide-down.open,
 .slideIn.open {
   transform: translateY(0px);
 }
 
 .map-marker {
   margin-top: -30px;
+}
+
+.slide-up {
+  transition: all 2s;
+  transition-timing-function: cubic-bezier(0.1, 0.1, 0.06, 0.73);
+  transform: translateY(300px);
+}
+
+.slide-down {
+  transition: all 2s;
+  transition-timing-function: cubic-bezier(0.1, 0.1, 0.06, 0.73);
+  transform: translateY(-300px);
+}
+
+.slide-down.closed {
+  transform: translateY(300px);
 }
