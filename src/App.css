@@ -5,7 +5,7 @@
 
 .paragraph {
   font-family: GillSans;
-  text-align: center;
+  color: #666;
 }
 
 .slideIn {
@@ -28,4 +28,8 @@
 .slideIn-2nd.open,
 .slideIn.open {
   transform: translateY(0px);
+}
+
+.map-marker {
+  margin-top: -30px;
 }
