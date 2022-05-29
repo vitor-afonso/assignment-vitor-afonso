@@ -11,6 +11,8 @@ import { Locations } from './components/Locations';
 import { OurMenu } from './components/OurMenu';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { PopularRecipes } from './components/PopularRecipes';
+import { ColaborateWithUs } from './components/ColaborateWithUs';
+import { Footer } from './components/Footer';
 
 function App() {
   const ref = useRef();
@@ -33,7 +35,7 @@ function App() {
             <h1 className='text-2xl '>NOW IN LONDON</h1>
           </div>
         </section>
-        <section className={`grid grid-cols-4 gap-y-4 px-32 py-20 bg-[#ececec] relative z-50`} ref={ref}>
+        <section className={`grid grid-cols-4 gap-y-4 px-32 py-20 bg-[#fbfbfb] relative z-50`} ref={ref}>
           <div></div>
           <div className='section-2-row-1-right w-48'>
             <div className='relative text-5xl flex flex-col text-left'>
@@ -122,8 +124,10 @@ function App() {
           </div>
         </section>
         <Locations />
-        <OurMenu ref={ref} />
+        <OurMenu />
         <PopularRecipes />
+        <ColaborateWithUs />
+        <Footer />
       </div>
     </ParallaxProvider>
   );

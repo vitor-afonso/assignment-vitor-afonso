@@ -1,21 +1,61 @@
 //jshint esversion:9
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { RecipeCard } from './RecipeCard';
 import axios from 'axios';
+import arrowImg from '../icons/icons8-arrow-48.png';
+import arrowGrayImg from '../icons/icons8-arrow-gray-48.png';
 
 export const PopularRecipes = () => {
   const [recipes, setRecipes] = useState([]);
+  const [rightArrow, setRightArrow] = useState(arrowImg);
+  const [leftArrow, setLeftArrow] = useState(arrowGrayImg);
+  const carousel = useRef(null);
 
   useEffect(() => {
     (async () => {
-      let response = await axios.get(`https://studiographene-exercise-api.herokuapp.com/foods`);
-      setRecipes(response.data);
+      try {
+        let response = await axios.get(`https://studiographene-exercise-api.herokuapp.com/foods`);
+        setRecipes(response.data);
+      } catch (error) {
+        console.log('Something went wrong while trying to get recipes.');
+      }
     })();
   }, []);
 
+  const slideLeft = (e) => {
+    e.preventDefault();
+
+    let carouselWidth = carousel.current.offsetWidth;
+    carousel.current.scrollLeft -= carouselWidth - 300;
+    setRightArrow(arrowImg);
+
+    if (carousel.current.scrollLeft !== 1392 && carousel.current.scrollLeft !== 0) {
+      setLeftArrow(arrowImg);
+    }
+
+    if (carousel.current.scrollLeft === 0) {
+      setLeftArrow(arrowGrayImg);
+    }
+  };
+
+  const slideRight = (e) => {
+    e.preventDefault();
+
+    let carouselWidth = carousel.current.offsetWidth;
+    carousel.current.scrollLeft += carouselWidth - 300;
+    setLeftArrow(arrowImg);
+
+    if (carousel.current.scrollLeft < 1392 && carousel.current.scrollLeft > 0) {
+      setRightArrow(arrowGrayImg);
+    }
+    if (carousel.current.scrollLeft === 1392) {
+      setRightArrow(arrowGrayImg);
+    }
+  };
+
   return (
-    <section className=' pt-20  relative z-50 bg-[#fbfbfb] space-y-10 h-screen'>
+    <section className=' pt-20  relative z-50 bg-[#fbfbfb] space-y-10 h-screen flex flex-col'>
       <div className='flex justify-between px-32'>
         <div className='w-36 '>
           <div className='relative text-5xl flex flex-col text-left'>
@@ -40,11 +80,19 @@ export const PopularRecipes = () => {
           </div>
         </div>
       </div>
-      <div className='pl-32 flex overflow-hidden space-x-4'>
+      <div className='pl-32 pr-4 flex overflow-hidden scroll-smooth space-x-4' ref={carousel}>
         {recipes &&
           recipes.map((recipe) => {
-            return <RecipeCard recipe={recipe} />;
+            return <RecipeCard recipe={recipe} key={recipe.id} />;
           })}
+      </div>
+      <div className='self-end pr-32'>
+        <button className='cursor-pointer' onClick={(e) => slideLeft(e)}>
+          <img src={leftArrow} alt='Arrow left' className='rotate-180' />
+        </button>
+        <button className='cursor-pointer' onClick={(e) => slideRight(e)}>
+          <img src={rightArrow} alt='Arrow right' />
+        </button>
       </div>
     </section>
   );
