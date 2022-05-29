@@ -1,8 +1,8 @@
 //jshint esversion:9
 
-export const ColaborateWithUs = () => {
+export const ColaborateWithUs = ({ section6 }) => {
   return (
-    <section className='min-h-[50vh] flex px-32 py-16 bg-[#FFDAC9] relative z-50'>
+    <section className='min-h-[50vh] flex px-32 py-16 bg-[#FFDAC9] relative z-50' ref={section6}>
       <div className='w-[50vw] space-y-6'>
         <div className='w-36 '>
           <div className='relative text-5xl flex flex-col text-left'>

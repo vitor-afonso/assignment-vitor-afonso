@@ -6,7 +6,7 @@ import axios from 'axios';
 import arrowImg from '../icons/icons8-arrow-48.png';
 import arrowGrayImg from '../icons/icons8-arrow-gray-48.png';
 
-export const PopularRecipes = () => {
+export const PopularRecipes = ({ section5 }) => {
   const [recipes, setRecipes] = useState([]);
   const [rightArrow, setRightArrow] = useState(arrowImg);
   const [leftArrow, setLeftArrow] = useState(arrowGrayImg);
@@ -55,7 +55,7 @@ export const PopularRecipes = () => {
   };
 
   return (
-    <section className=' pt-20  relative z-50 bg-[#fbfbfb] space-y-10 h-screen flex flex-col'>
+    <section className=' pt-20  relative z-50 bg-[#fbfbfb] space-y-10 h-screen flex flex-col' ref={section5}>
       <div className='flex justify-between px-32'>
         <div className='w-36 '>
           <div className='relative text-5xl flex flex-col text-left'>
@@ -72,7 +72,7 @@ export const PopularRecipes = () => {
           </div>
         </div>
         <div className='flex flex-col items-end self-end'>
-          <h1 className='text-3xl'>DO YOU WANT TO SHAREYOUR OWN RECIPE?</h1>
+          <h1 className='text-3xl'>DO YOU WANT TO SHARE YOUR OWN RECIPE?</h1>
           <div>
             <button className='px-3 bg-[#FFDAC9] flex items-center h-6'>
               <span className='mt-1'> SEND IT NOW </span>

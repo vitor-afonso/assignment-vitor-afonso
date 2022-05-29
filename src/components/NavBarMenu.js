@@ -1,6 +1,5 @@
 //jshint esversion:9
 
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const NavBarMenu = () => {

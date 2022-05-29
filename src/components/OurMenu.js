@@ -1,9 +1,9 @@
 // jshint esversion:9
 import { Parallax } from 'react-scroll-parallax';
 
-export const OurMenu = () => {
+export const OurMenu = ({ section4 }) => {
   return (
-    <section className='h-screen relative grid grid-cols-6 bg-[#EEE] '>
+    <section className='h-screen relative grid grid-cols-6 bg-[#EEE]' ref={section4}>
       <div className='w-44 flex flex-col items-center absolute top-20 left-0 right-0 mx-auto z-50'>
         <div className='relative text-5xl flex flex-col text-left'>
           <div className='px-2'>
@@ -61,7 +61,7 @@ export const OurMenu = () => {
       </div>
 
       <div className='border-r-[1px] border-black h-full pb-20 bg-[#EEE] z-20'>
-        <Parallax translateY={[170, -170]} speed={-10} className={`space-y-12 flex flex-col items-end h-full justify-center pt-44 relative  `}>
+        <Parallax translateY={[170, -170]} className={`space-y-12 flex flex-col items-end h-full justify-center pt-44 relative  `}>
           <h1 className='text-5xl absolute top-60 -left-2 text-left'>SIDES</h1>
 
           <div className='w-full text-left space-y-4 px-5'>
