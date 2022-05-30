@@ -1,27 +1,15 @@
 //jshint esversion:9
 
-import { useEffect, useRef, useState } from 'react';
-import { RecipeCard } from './RecipeCard';
-import axios from 'axios';
+import { useRef, useState } from 'react';
+import { RecipeCards } from './RecipeCard';
+
 import arrowImg from '../icons/icons8-arrow-48.png';
 import arrowGrayImg from '../icons/icons8-arrow-gray-48.png';
 
 export const PopularRecipes = ({ section5 }) => {
-  const [recipes, setRecipes] = useState([]);
   const [rightArrow, setRightArrow] = useState(arrowImg);
   const [leftArrow, setLeftArrow] = useState(arrowGrayImg);
   const carousel = useRef(null);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        let response = await axios.get(`https://studiographene-exercise-api.herokuapp.com/foods`);
-        setRecipes(response.data);
-      } catch (error) {
-        console.log('Something went wrong while trying to get recipes.');
-      }
-    })();
-  }, []);
 
   const slideLeft = (e) => {
     e.preventDefault();
@@ -80,11 +68,8 @@ export const PopularRecipes = ({ section5 }) => {
           </div>
         </div>
       </div>
-      <div className='pl-32 pr-4 flex overflow-hidden scroll-smooth space-x-4' ref={carousel}>
-        {recipes &&
-          recipes.map((recipe) => {
-            return <RecipeCard recipe={recipe} key={recipe.id} />;
-          })}
+      <div className='pl-32 pr-4 flex overflow-hidden scroll-smooth' ref={carousel}>
+        <RecipeCards />
       </div>
       <div className='self-end pr-32'>
         <button className='cursor-pointer' onClick={(e) => slideLeft(e)}>
